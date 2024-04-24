@@ -180,41 +180,11 @@ function removeFromWishlist(product) {
         updateWishlist();
     }
 }
-        // Function to apply filter and sort
-        function applyFilter() {
-            const filterPrice = document.getElementById('filterPrice').value;
-            const sort = document.getElementById('sort').value;
-            const products = document.querySelectorAll('.product');
-            let productsArray = Array.from(products);
 
-            // Filter products based on selected price range
-            productsArray = productsArray.filter(product => {
-                const price = parseFloat(product.getAttribute('data-price'));
-                if (filterPrice === 'all') return true;
-                if (filterPrice === 'low') return price < 20;
-                if (filterPrice === 'medium') return price >= 20 && price <= 40;
-                if (filterPrice === 'high') return price > 40;
-                return false;
-            });
 
-            // Sort products based on selected criteria
-            productsArray.sort((a, b) => {
-                if (sort === 'name') {
-                    return a.querySelector('h3').textContent.localeCompare(b.querySelector('h3').textContent);
-                }
-                if (sort === 'price') {
-                    return parseFloat(a.getAttribute('data-price')) - parseFloat(b.getAttribute('data-price'));
-                }
-                if (sort === 'rating') {
-                    return parseFloat(b.getAttribute('data-rating')) - parseFloat(a.getAttribute('data-rating'));
-                }
-                return 0;
-            });
 
-            // Display the filtered and sorted products
-            const productsContainer = document.getElementById('products');
-            productsContainer.innerHTML = '';
-            productsArray.for
+
+          
     </script>
 </body>
 </html>
