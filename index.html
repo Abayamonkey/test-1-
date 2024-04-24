@@ -1,190 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        /* Styles for the configurator */
-        .configurator {
-            width: 300px;
-            margin: 20px;
-        }
-
-        .configurator label,
-        .configurator select {
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        .configurator button {
-            padding: 8px 16px;
-            background-color: #007BFF;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .wishlist {
-            width: 300px;
-            margin: 20px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        .wishlist-item {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-        }
-
-        .wishlist button {
-            padding: 6px 12px;
-            background-color: #007BFF;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        /* Styling the filter and sort container */
-        .filter-sort {
-            margin: 20px;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .filter-sort select {
-            padding: 6px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        .products {
-            margin: 20px;
-        }
-
-        .product {
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin-bottom: 10px;
-        }
-    </style>
-    
+    <title>Арвбаяр</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js" defer></script>
 </head>
+
 <body>
-    <div class="configurator">
-        <h3>Customize Product</h3>
-        <label for="color">Color:</label>
-        <select id="color">
-            <option value="Red">Red</option>
-            <option value="Blue">Blue</option>
-            <option value="Green">Green</option>
-        </select>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Арвбаяр</div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#products">Services</a></li>
+            <li><a href="#news">News</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#" onclick="openSignInSignUpModal()">Sign In / Sign Up</a></li>
+        </ul>
+    </nav>
 
-        <label for="size">Size:</label>
-        <select id="size">
-            <option value="Small">Small</option>
-            <option value="Medium">Medium</option>
-            <option value="Large">Large</option>
-        </select>
+    <!-- Hero Section (Home) -->
+    <section id="home">
+        <div class="hero">
+            <h1>Welcome to Арвбаяр</h1>
+            <p>Experience the best horse riding and booking services</p>
+            <a href="#products" class="cta-button">Discover More</a>
+        </div>
+    </section>
 
-        <button onclick="addToCart()">Add to Cart</button>
+    <!-- Services Section -->
+    <section id="products">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="product-grid">
+                <div class="product">
+                    <h3>Booking Horse</h3>
+                    <p>Rent a horse for any occasion</p>
+                    <a href="booking_horse.html" class="cta-button">Book Now</a>
+                </div>
+                <div class="product">
+                    <h3>Horse Riding Lesson</h3>
+                    <p>Learn how to ride horses with professional instructors</p>
+                    <a href="horse_riding_lesson.html" class="cta-button">Learn More</a>
+                </div>
+                <div class="product">
+                    <h3>Register for Traveling with Horses</h3>
+                    <p>Plan your next adventure with horses</p>
+                    <a href="traveling_with_horses.html" class="cta-button">Plan Now</a>
+                </div>
+                <div class="product">
+                    <h3>Booking a Horse for Photoshoots</h3>
+                    <p>Book a horse for your next photoshoot</p>
+                    <a href="photoshoot_booking.html" class="cta-button">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section id="news">
+        <div class="container">
+            <h2>Horse Race News</h2>
+            <p>Stay updated with the latest horse race news.</p>
+            <!-- Add dynamic news content here -->
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about">
+        <div class="container">
+            <h2>About Us</h2>
+            <p>Learn more about Арвбаяр and our mission.</p>
+            <!-- Add additional information about the company here -->
+        </div>
+    </section>
+
+    <!-- Sign In / Sign Up Modal -->
+    <div id="signInSignUpModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeSignInSignUpModal()">&times;</span>
+            <h2>Sign In / Sign Up</h2>
+            <div class="form-container">
+                <form id="signInForm">
+                    <h3>Sign In</h3>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="password" name="password" placeholder="Password" required>
+                    <button type="submit">Sign In</button>
+                </form>
+                <form id="signUpForm">
+                    <h3>Sign Up</h3>
+                    <input type="text" name="name" placeholder="Name" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="password" name="password" placeholder="Password" required>
+                    <button type="submit">Sign Up</button>
+                </form>
+            </div>
+        </div>
     </div>
-    <div class="wishlist">
-        <h3>Your Wishlist</h3>
-        <div id="wishlistItems"></div>
-    </div>
 
-    <button onclick="addToWishlist('Product 1')">Add Product 1 to Wishlist</button>
-    <button onclick="addToWishlist('Product 2')">Add Product 2 to Wishlist</button>
-    <div class="filter-sort">
-        <div class="filter">
-            <label for="filterPrice">Filter by price:</label>
-            <select id="filterPrice" onchange="applyFilter()">
-                <option value="all">All</option>
-                <option value="low">Below $20</option>
-                <option value="medium">$20 - $40</option>
-                <option value="high">Above $40</option>
-            </select>
-        </div>
-
-        <div class="sort">
-            <label for="sort">Sort by:</label>
-            <select id="sort" onchange="applyFilter()">
-                <option value="name">Name</option>
-                <option value="price">Price</option>
-                <option value="rating">Rating</option>
-            </select>
-        </div>
-    </div>
-
-    <div id="products" class="products">
-        <div class="product" data-price="19.99" data-rating="4.5">
-            <h3>Product 1</h3>
-            <p>Price: $19.99</p>
-            <p>Rating: 4.5</p>
-        </div>
-        <div class="product" data-price="29.99" data-rating="4.0">
-            <h3>Product 2</h3>
-            <p>Price: $29.99</p>
-            <p>Rating: 4.0</p>
-        </div>
-        <div class="product" data-price="39.99" data-rating="4.8">
-            <h3>Product 3</h3>
-            <p>Price: $39.99</p>
-            <p>Rating: 4.8</p>
-        </div>
-    </div>
-
-    <script>
-        // Function to add the customized product to the cart
-        function addToCart() {
-            const color = document.getElementById('color').value;
-            const size = document.getElementById('size').value;
-
-            // Add the selected options to the cart
-            alert(`Product added to cart:\nColor: ${color}\nSize: ${size}`);
-        }
-          // Wishlist data
-          const wishlist = [];
-
-// Function to update the wishlist UI
-function updateWishlist() {
-    const wishlistItems = document.getElementById('wishlistItems');
-    wishlistItems.innerHTML = ''; // Clear previous wishlist items
-
-    wishlist.forEach(item => {
-        // Add each item to the wishlist UI
-        const wishlistItem = document.createElement('div');
-        wishlistItem.classList.add('wishlist-item');
-        wishlistItem.innerHTML = `
-            <span>${item}</span>
-            <button onclick="removeFromWishlist('${item}')">Remove</button>
-        `;
-        wishlistItems.appendChild(wishlistItem);
-    });
-}
-
-// Function to add an item to the wishlist
-function addToWishlist(product) {
-    wishlist.push(product);
-    updateWishlist();
-}
-
-// Function to remove an item from the wishlist
-function removeFromWishlist(product) {
-    const index = wishlist.indexOf(product);
-    if (index !== -1) {
-        wishlist.splice(index, 1);
-        updateWishlist();
-    }
-}
-
-
-
-
-          
-    </script>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Арвбаяр</p>
+    </footer>
 </body>
+
 </html>
