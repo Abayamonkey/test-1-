@@ -97,7 +97,7 @@
     line-height: 24px;
   }
   .navigation-links {
-    width: 60%;
+    width: 40%;
     display: flex;
     justify-content: space-between;
     max-width: 1000px;
